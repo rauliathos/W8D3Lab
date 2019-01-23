@@ -13,7 +13,19 @@ BucketList.prototype.bindEvents = function () {
 BucketList.prototype.postEntry = function (entry) {
   const request = new RequestHelper(this.url);
     request.post(entry)
-      .then(console.log('entry posted'))
+      .then( (entries) => {
+        // console.log(entries);
+        PubSub.publish('BucketList: all entries ready', entries)
+
+      })
+};
+
+BucketList.prototype.getData = function () {
+const request = new RequestHelper(this.url);
+request.get()
+    .then((entries) =>{
+      PubSub.publish('BucketList: all entries ready', entries)
+    })
 };
 
 

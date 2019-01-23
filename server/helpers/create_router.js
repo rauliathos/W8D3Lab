@@ -42,6 +42,7 @@ const createRouter = function (collection) {
       .then((docs) => res.json(docs))
       .catch(console.error)
   })
+  
   return router;
 }
 
