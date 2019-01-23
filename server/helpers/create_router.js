@@ -12,7 +12,7 @@ const createRouter = function (collection) {
     .catch(console.error)
 
   })
-
+  // get by id
   router.get('/:id',(req, res) =>{
     const id = req.params.id;
     collection
@@ -33,7 +33,15 @@ const createRouter = function (collection) {
       .then((docs) => res.json(docs))
       .catch(console.error)
   })
+  // delete by id
 
+  router.delete('/:id',(req, res) =>{
+    const id = req.params.id;
+    collection
+      .deleteOne({ _id: ObjectId(id)})
+      .then((docs) => res.json(docs))
+      .catch(console.error)
+  })
   return router;
 }
 
