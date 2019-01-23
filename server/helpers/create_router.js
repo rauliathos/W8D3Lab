@@ -4,6 +4,17 @@ const ObjectId = require('mongodb').ObjectId;
 const createRouter = function (collection) {
   const router = express.Router();
 
+  //get
+  router.get('/', (req, res) =>{
+    collection
+    .find().toArray()
+    .then((docs) => res.json(docs))
+    .catch(console.error)
+
+  })
+
+
+
   //post
   router.post('/', (req, res) => {
     const newEntry = req.body;
