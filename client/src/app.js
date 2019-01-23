@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputFormView = new FormView(inputForm);
   inputFormView.bindEvents();
 
-  const bucketListUrl = 'http://localhost:3000/api/bucketlist'
+  const bucketListUrl = 'http://localhost:3000/api/entries'
   const bucket = new BucketList(bucketListUrl);
     bucket.bindEvents();
 

@@ -16,9 +16,16 @@ FormView.prototype.bindEvents = function () {
  FormView.prototype.handleSubmit = function (evt) {
    evt.preventDefault();
    // console.log(evt);
-   const newEntry = evt.target['text-input'].value
+   const newEntry = this.makeEntry(evt.target) // string, not an object {}
+   console.log('JSON object:', newEntry)
    PubSub.publish('FormView:entry-submitted', newEntry)
    console.log(newEntry);
  };
 
+ FormView.prototype.makeEntry = function (data) {
+   const newEntry = {
+     "text-input": data['text-input'].value
+   }
+   return newEntry
+ };
 module.exports = FormView;

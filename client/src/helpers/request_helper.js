@@ -4,13 +4,14 @@ const RequestHelper = function (url) {
 };
 
 RequestHelper.prototype.post = function (payload) {
+  console.log(payload);
   return fetch(this.url, {
     method: 'POST',
     body: JSON.stringify(payload),
     headers: { 'Content-Type': 'application/json' }
   })
     .then((response) => response.json());
-};
+}
 
 
 module.exports = RequestHelper;
